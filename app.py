@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from PIL import Image
 import numpy as np
 import pickle
+import requests  # Ajoutez cette ligne
 
 app = Flask(__name__)
 
