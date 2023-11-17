@@ -6,7 +6,7 @@ import pickle
 app = Flask(__name__)
 
 # Chargez le modèle
-model = pickle.load(open('model_classification_images.pkl', 'rb'))
+model = pickle.load(open('http://smart.marocmeteo.ma/build/model_classification_images.pkl', 'rb'))
 
 @app.route('/')
 def index():
