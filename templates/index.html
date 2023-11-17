@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Classification d'images</title>
+</head>
+<body>
+    <h1>Application Web de Classification d'Images</h1>
+    <form method="post" action="/predict" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Prédire">
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
