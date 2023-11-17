@@ -5,8 +5,18 @@ import pickle
 
 app = Flask(__name__)
 
-# Chargez le modèle
-model = pickle.load(open('http://smart.marocmeteo.ma/build/model_classification_images.pkl', 'rb'))
+# Chargez le modèle lors du démarrage de l'application
+model_url = 'http://smart.marocmeteo.ma/build/model_classification_images.pkl'
+response = requests.get(model_url)
+
+if response.status_code == 200:
+    with open('model_classification_images.pkl', 'wb') as file:
+        file.write(response.content)
+        
+    # Chargez le modèle
+    model = pickle.load(open('model_classification_images.pkl', 'rb'))
+else:
+    raise Exception(f"Échec du téléchargement du modèle. Code d'état : {response.status_code}")
 
 @app.route('/')
 def index():
